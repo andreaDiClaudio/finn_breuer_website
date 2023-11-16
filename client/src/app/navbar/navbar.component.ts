@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  isBurgerOpen: boolean = false;
+
+  // opens and closes the burger menu
+  openBurger() {
+    this.isBurgerOpen = !this.isBurgerOpen
+    console.log(this.isBurgerOpen);
+  }
+
 }
