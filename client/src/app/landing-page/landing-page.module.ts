@@ -5,12 +5,14 @@ import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { LandingPageComponent } from './landing-page.component';
 import {NavbarModule} from "../navbar/navbar.module";
 import { ShowreelWorksComponent } from './showreel-works/showreel-works.component';
+import { ClientsComponent } from './clients/clients.component';
 
 
 @NgModule({
   declarations: [
     LandingPageComponent,
-    ShowreelWorksComponent
+    ShowreelWorksComponent,
+    ClientsComponent
   ],
     imports: [
         CommonModule,
