@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./landing-page/landing-page.module').then(m => m.LandingPageModule) },
-  { path: 'navbar', loadChildren: () => import('./navbar/navbar.module').then(m => m.NavbarModule) }
+  { path: 'navbar', loadChildren: () => import('./navbar/navbar.module').then(m => m.NavbarModule) },
 ];
 
 @NgModule({
