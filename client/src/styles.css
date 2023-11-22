@@ -40,3 +40,10 @@
 .fadeOut {
   animation: fadeOut 0.5s ease-in-out forwards;
 }
+
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
