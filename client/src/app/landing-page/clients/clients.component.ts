@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {DataService} from "../../service/data.service";
+import {Clients_Logo} from "../../model/model";
 
 @Component({
   selector: 'fb-clients',
@@ -8,6 +10,8 @@ import { Component } from '@angular/core';
 export class ClientsComponent {
 
   pathToImage: string = "assets/images/landingPage/clientsLogo/"
+
+  clientsLogoUrlArray: string[] = [];
 
   clientsLogo: string[] = [
     this.pathToImage + "angus_logo.png",
@@ -26,5 +30,12 @@ export class ClientsComponent {
     this.pathToImage + "wooshii_logo.png",
     this.pathToImage + "gods_logo.png"
   ]
+
+  constructor(dataService: DataService) {
+    dataService.getClientLogos().subscribe((result) => {
+      this.clientsLogoUrlArray  = dataService.clientsLogoUrl;
+      console.log(this.clientsLogoUrlArray)
+    })
+  }
 
 }

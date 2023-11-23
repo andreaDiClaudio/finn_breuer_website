@@ -13,8 +13,7 @@ export class LandingPageComponent {
   landingVideoUrl: SafeUrl = "";
   constructor(private dataService: DataService,private sanitizer: DomSanitizer, ) {
     this.dataService.getLandingVideo().subscribe((result) => {
-      const video = result as Video
-      this.landingVideoUrl  = this.sanitizer.bypassSecurityTrustResourceUrl(video.secure_url)
+      this.landingVideoUrl  = this.sanitizer.bypassSecurityTrustResourceUrl(this.dataService.landingVideoUrl)
     })
   }
 }
