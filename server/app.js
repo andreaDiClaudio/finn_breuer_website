@@ -17,7 +17,7 @@ cloudinary.config({
     secure: true
 })
 
-app.get("/api", async (req, res) => {
+app.get("/api/landingVideo", async (req, res) => {
     try {
         const folderPath = "samples/finn_website_test/*";
 
@@ -25,7 +25,7 @@ app.get("/api", async (req, res) => {
         .expression('folder:' + folderPath).sort_by('public_id','desc').execute();
         const elements = result.resources;
 
-        res.json({count: elements.length, elements: elements})
+        res.json(elements[0])
 
     } catch (err) {
         res.status(500).json({ error: 'Error in retrieving images' });
