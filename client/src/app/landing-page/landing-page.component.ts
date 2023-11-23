@@ -11,16 +11,10 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 export class LandingPageComponent {
 
   landingVideoUrl: SafeUrl = "";
-  contactSectionImageHeight: string = ""
   constructor(private dataService: DataService,private sanitizer: DomSanitizer, ) {
     this.dataService.getLandingVideo().subscribe((result) => {
       const video = result as Video
       this.landingVideoUrl  = this.sanitizer.bypassSecurityTrustResourceUrl(video.secure_url)
     })
-
-    console.log(window.innerHeight)
-    if (window.innerHeight <= 825) {
-      console.log("chrome")
-    }
   }
 }

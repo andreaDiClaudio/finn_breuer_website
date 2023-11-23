@@ -10,10 +10,9 @@ export class ContactsComponent {
   contactSectionImageHeight: string = ""
   constructor() {
     if (window.innerHeight > 825) {
-      this.contactSectionImageHeight = "h-[69.5vh] min-h-[671px]"
+      this.contactSectionImageHeight = "sm:h-[76.5vh] sm:min-h-[738px] h-[65vh] min-h-[370px]"
     } else {
-      this.contactSectionImageHeight = "h-[64.5vh] min-h-[532px]"
+      this.contactSectionImageHeight = "sm:h-[72.3vh] sm:min-h-[597px] h-[60vh] min-h-[495px]"
     }
   }
-
 }
