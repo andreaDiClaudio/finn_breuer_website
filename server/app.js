@@ -1,18 +1,39 @@
 import express from "express";
-import dotenv from "dotenv";
-import cors from "cors";
+import {v2 as cloudinary} from "cloudinary"
+import dotenv from "dotenv"
+import cors from "cors"
 
 const app = express();
-app.use(cors());
-//needed to read .env file
 dotenv.config();
 
 app.use(cors({
     origin: 'http://localhost:4200' //replace with your domain or specific front-end origin
 }));
 
-const PORT = process.env.PORT
-app.listen((PORT), () => {
-    console.log("Server is running on port:", PORT)
+cloudinary.config({
+    cloud_name: process.env.CLOUDNAME,
+    api_key: process.env.APIKEY,
+    api_secret: process.env.APISECRET,
+    secure: true
 })
 
+app.get("/api", async (req, res) => {
+    try {
+        const folderPath = "samples/finn_website_test/*";
+
+        const result = await cloudinary.search
+        .expression('folder:' + folderPath).sort_by('public_id','desc').execute();
+        const elements = result.resources;
+
+        res.json({count: elements.length, elements: elements})
+
+    } catch (err) {
+        res.status(500).json({ error: 'Error in retrieving images' });
+    }
+})
+
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+    console.log("Server is running on port: ", PORT)
+})
