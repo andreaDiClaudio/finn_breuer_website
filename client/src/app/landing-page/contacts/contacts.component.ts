@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'fb-contacts',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent {
+
+  contactSectionImageHeight: string = ""
+  constructor() {
+    if (window.innerHeight > 825) {
+      this.contactSectionImageHeight = "h-[69.5vh] min-h-[671px]"
+    } else {
+      this.contactSectionImageHeight = "h-[64.5vh] min-h-[532px]"
+    }
+  }
 
 }

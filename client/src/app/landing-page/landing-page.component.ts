@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {DataService} from "../service/data.service";
 import {Video} from "../model/model";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
@@ -8,14 +8,19 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css']
 })
-export class LandingPageComponent  {
+export class LandingPageComponent {
 
   landingVideoUrl: SafeUrl = "";
-  constructor(private dataService: DataService,private sanitizer: DomSanitizer) {
+  contactSectionImageHeight: string = ""
+  constructor(private dataService: DataService,private sanitizer: DomSanitizer, ) {
     this.dataService.getLandingVideo().subscribe((result) => {
       const video = result as Video
       this.landingVideoUrl  = this.sanitizer.bypassSecurityTrustResourceUrl(video.secure_url)
     })
-  }
 
+    console.log(window.innerHeight)
+    if (window.innerHeight <= 825) {
+      console.log("chrome")
+    }
+  }
 }
