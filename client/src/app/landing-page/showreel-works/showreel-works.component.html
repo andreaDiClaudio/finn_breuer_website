@@ -1,8 +1,8 @@
 <div>
-  <img src="../../../assets/images/landingPage/show_reel/show_reel.jpg" alt="background image" class="absolute h-[58%] min-h-[540px] w-full object-cover z-[-2] select-none">
+  <img [ngClass]="showReelHeight" src="../../../assets/images/landingPage/show_reel/show_reel.jpg" alt="background image" class=" h-[58vh] min-h-[540px] absolute w-full object-cover z-[-2] select-none">
 
-  <div class="h-[540px]">
-    <div class="bg-[#000000B2] h-full sm:w-[38vw] sm:min-w-[324px] w-full flex sm:pl-14 items-center">
+  <div [ngClass]="showReelHeight">
+    <div [ngClass]="showReelHeight" class="bg-[#000000B2] sm:w-[38vw] sm:min-w-[324px] w-full flex sm:pl-14 items-center">
       <div class="flex flex-col">
         <span class="text-white text-[5rem] font-bold sm:text-left text-center">SHOW REEL</span>
         <div class="sm:w-[90%] flex flex-wrap justify-center items-center">
@@ -18,8 +18,8 @@
 </div>
 
 <div>
-  <img src="../../../assets/images/landingPage/show_reel/show_reel.jpg" alt="background image" class="absolute h-[40.5%] min-h-[375px] w-full object-cover z-[-2] select-none">
-  <div class="h-[375px]">
+  <img [ngClass]="worksHeight" src="../../../assets/images/landingPage/show_reel/show_reel.jpg" alt="background image" class="absolute w-full object-cover z-[-2] select-none">
+  <div [ngClass]="worksHeight">
     <div class="h-full flex flex-col justify-center items-center">
       <span class="text-white text-[5rem] font-bold sm:text-left text-center">PASSION FOR ART</span>
       <div class="pt-4">
