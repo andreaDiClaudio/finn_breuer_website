@@ -61,3 +61,12 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+@keyframes custom-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-custom-bounce {
+  animation: custom-bounce 1s infinite;
+}

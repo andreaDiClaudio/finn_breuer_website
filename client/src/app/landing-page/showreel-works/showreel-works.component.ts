@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {DataService} from "../../service/data.service";
 
 @Component({
@@ -10,7 +10,7 @@ export class ShowreelWorksComponent {
 
   showReelHeight: string = "";
   worksHeight: string = "";
-  showReelImageUrl = ""
+  @Input() showReelImageUrl = ""
 
   constructor(dataService: DataService) {
     if (window.innerHeight > 825) {
@@ -20,10 +20,6 @@ export class ShowreelWorksComponent {
       this.showReelHeight = "h-[58vh] min-h-[477px] "
       this.worksHeight= "h-[40vh] min-h-[330px]"
     }
-
-    dataService.getShowreelImage().subscribe(() => {
-      this.showReelImageUrl = dataService.showReelImageUrl;
-    })
   }
 
 }

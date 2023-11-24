@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, Input,} from '@angular/core';
 import {DataService} from "../../service/data.service";
 
 @Component({
@@ -9,7 +9,7 @@ import {DataService} from "../../service/data.service";
 export class ContactsComponent {
 
   contactSectionImageHeight: string = ""
-  contactImageUrl: string = "";
+  @Input() contactImageUrl: string = "";
 
   constructor(dataService: DataService) {
     if (window.innerHeight > 825) {
@@ -17,11 +17,6 @@ export class ContactsComponent {
     } else {
       this.contactSectionImageHeight = "sm:h-[72.3vh] sm:min-h-[597px] h-[60vh] min-h-[495px]"
     }
-
-    dataService.getContactImage().subscribe(() => {
-      this.contactImageUrl = dataService.contactImageUrl;
-    })
-
   }
 
 }
