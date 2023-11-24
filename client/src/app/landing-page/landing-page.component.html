@@ -9,11 +9,13 @@
     </div>
   </div>
 
-  <div *ngIf="!isLoading">
+  <div *ngIf="!isLoading" class="select-none">
 
     <div *ngIf="isSafari" class="select-none">
       <img src="{{videoThumbImageUrl}}" [ngClass]="{fadeIn:true}" alt="video Thumbnail" class="absolute h-full w-full object-cover z-[-4] select-none">
-      <video #landingVideo [ngClass]="{videoSafariFadeIn:true}"  [src]="landingVideoUrl" (canplay)="landingVideo.play()" muted="muted" loop="loop" class="absolute h-full w-full object-cover z-[-2] select-none"></video>
+      <video #landingVideo [ngClass]="{videoSafariFadeIn:true}"  [src]="landingVideoUrl" class="absolute h-full w-full object-cover z-[0] select-none" autoplay="autoplay" loop="loop" muted="muted">
+        <source src="{{landingVideoUrl}} ">
+      </video>
     </div>
 
     <div *ngIf="!isSafari">
@@ -22,7 +24,7 @@
 
     <fb-navbar></fb-navbar>
     <div class="h-[100vh] flex items-end justify-center ">
-      <span [ngClass]="{'animate-custom-bounce':isBouncing}" class="material-icons text-white select-none text-[4rem]">keyboard_arrow_down</span>
+      <span [ngClass]="{'animate-custom-bounce':isBouncing}" class="material-icons text-white select-none text-[4rem] z-[1]">keyboard_arrow_down</span>
     </div>
     <fb-showreel-works [showReelImageUrl]="showReelImageUrl"></fb-showreel-works>
     <fb-clients [clientsLogoUrlArray]="clientsLogoUrlArray"></fb-clients>
