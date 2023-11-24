@@ -1,11 +1,23 @@
 <div>
-  <video #landingVideo [src]="landingVideoUrl" (canplay)="landingVideo.play()" (loadedmetadata)="landingVideo.muted = true" loop="loop" class="absolute h-full w-full object-cover z-[-2] select-none"></video>
-  <fb-navbar></fb-navbar>
-  <div class="h-[100vh] flex items-end justify-center ">
-    <span class="material-icons text-white select-none text-[4rem]">keyboard_arrow_down</span>
+
+  <div *ngIf="isLoading" [ngClass]="{fadeOut: true}">
+    <div class='flex space-x-2 justify-center items-center bg-white h-screen'>
+      <span class='sr-only'>Loading...</span>
+      <div class='h-8 w-8 bg-gray-700 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+      <div class='h-8 w-8 bg-gray-700 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+      <div class='h-8 w-8 bg-gray-700 rounded-full animate-bounce'></div>
+    </div>
   </div>
-  <fb-showreel-works></fb-showreel-works>
-  <fb-clients></fb-clients>
-  <fb-contacts></fb-contacts>
-  <fb-footer></fb-footer>
+
+  <div *ngIf="!isLoading" [ngClass]="{fadeIn: true}">
+    <video #landingVideo [src]="landingVideoUrl" (canplay)="landingVideo.play()" muted="muted" loop="loop" class="absolute h-full w-full object-cover z-[-2] select-none"></video>
+    <fb-navbar></fb-navbar>
+    <div class="h-[100vh] flex items-end justify-center ">
+      <span class="material-icons text-white select-none text-[4rem]">keyboard_arrow_down</span>
+    </div>
+    <fb-showreel-works></fb-showreel-works>
+    <fb-clients [clientsLogoUrlArray]="clientsLogoUrlArray"></fb-clients>
+    <fb-contacts></fb-contacts>
+    <fb-footer></fb-footer>
+    </div>
 </div>

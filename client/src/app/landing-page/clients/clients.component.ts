@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import {DataService} from "../../service/data.service";
-import {Image} from "../../model/model";
+import {Component, Input, OnInit,} from '@angular/core';
 
 @Component({
   selector: 'fb-clients',
@@ -9,12 +7,7 @@ import {Image} from "../../model/model";
 })
 export class ClientsComponent {
 
-  clientsLogoUrlArray: string[] = [];
+  @Input() clientsLogoUrlArray: string[] = [];
 
-  constructor(dataService: DataService) {
-    dataService.getClientLogos().subscribe((result) => {
-      this.clientsLogoUrlArray  = dataService.clientsLogoUrl;
-    })
-  }
 
 }

@@ -61,6 +61,22 @@ app.get("/api/contactsImage", async (req,res) => {
     }
 })
 
+app.get("/api/showReelLanding", async (req,res) => {
+    try {
+        const folderPath = "samples/finn_website_test/landingPage/showreel_works/*";
+
+        const result = await cloudinary.search
+            .expression('folder:' + folderPath).sort_by('public_id','desc').execute();
+
+        const elements = result.resources;
+
+        res.json(elements[0]);
+
+    } catch (err) {
+        res.status(500).json({ error: 'Error in retrieving image' });
+    }
+})
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log("Server is running on port: ", PORT)

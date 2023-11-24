@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 import { FooterRoutingModule } from './footer-routing.module';
 import { FooterComponent } from './footer.component';
@@ -14,7 +14,8 @@ import { FooterComponent } from './footer.component';
     ],
     imports: [
         CommonModule,
-        FooterRoutingModule
+        FooterRoutingModule,
+        NgOptimizedImage
     ]
 })
 export class FooterModule { }

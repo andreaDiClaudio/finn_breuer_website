@@ -1,5 +1,5 @@
 <div>
-  <img [ngClass]="showReelHeight" src="../../../assets/images/landingPage/show_reel/show_reel.jpg" alt="background image" class=" h-[58vh] min-h-[540px] absolute w-full object-cover z-[-2] select-none">
+  <img [ngClass]="showReelHeight" ngSrc="{{showReelImageUrl}}" alt="background image" class=" h-[58vh] min-h-[540px] absolute w-full object-cover z-[-2] select-none">
 
   <div [ngClass]="showReelHeight">
     <div [ngClass]="showReelHeight" class="bg-[#000000B2] sm:w-[38vw] sm:min-w-[324px] w-full flex sm:pl-14 items-center">
@@ -18,7 +18,7 @@
 </div>
 
 <div>
-  <img [ngClass]="worksHeight" src="../../../assets/images/landingPage/show_reel/show_reel.jpg" alt="background image" class="absolute w-full object-cover z-[-2] select-none">
+  <img [ngClass]="worksHeight" src="{{showReelImageUrl}}" alt="background image" class="absolute w-full object-cover z-[-2] select-none">
   <div [ngClass]="worksHeight">
     <div class="h-full flex flex-col justify-center items-center">
       <span class="text-white text-[5rem] font-bold sm:text-left text-center">PASSION FOR ART</span>

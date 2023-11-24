@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { LandingPageComponent } from './landing-page.component';
@@ -17,11 +17,12 @@ import {FooterModule} from "../footer/footer.module";
     ClientsComponent,
     ContactsComponent
   ],
-  imports: [
-    CommonModule,
-    LandingPageRoutingModule,
-    NavbarModule,
-    FooterModule
-  ]
+    imports: [
+        CommonModule,
+        LandingPageRoutingModule,
+        NavbarModule,
+        FooterModule,
+        NgOptimizedImage
+    ]
 })
 export class LandingPageModule { }
