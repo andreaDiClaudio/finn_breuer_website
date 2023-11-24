@@ -1,6 +1,8 @@
 <div class="flex justify-between p-10 fixed w-[100vw]">
-  <div>
-    <img src="assets/images/logo/finn_logo.png" [ngClass]="{fadeIn:true}" class="w-[11rem] border-[1px] border-black hover:cursor-pointer select-none" alt="finn_breuer_logo">
+  <div class="hover:cursor-pointer">
+    <a href="http://localhost:4200/">
+      <img src="assets/images/logo/finn_logo.png" [ngClass]="{fadeIn:true}" class="w-[11rem] border-[1px] border-black hover:cursor-pointer select-none" alt="finn_breuer_logo">
+    </a>
   </div>
 
   <div *ngIf="!isBurgerOpen">
@@ -13,7 +15,7 @@
     <div [ngClass]="{fadeIn:isBurgerOpen , fadeOut:!isBurgerOpen}" class="flex justify-around items-center bg-black bg-opacity-60 rounded-full p-2 select-none w-72">
       <span class="text-[1.2rem] text-white select-none underline-anim">Works</span>
       <span class="text-[1.2rem] text-white select-none underline-anim">About</span>
-      <span class="text-[1.2rem] text-white select-none underline-anim">Contacts</span>
+      <span class="text-[1.2rem] text-white select-none underline-anim hover:cursor-pointer" (click)="contactClick()">Contacts</span>
       <span class="material-icons text-[2rem] text-white select-none hover:cursor-pointer" (click)="openBurger()" >close</span>
     </div>
   </div>

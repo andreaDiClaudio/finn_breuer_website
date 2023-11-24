@@ -6,11 +6,11 @@ import {
   ViewChild,
   AfterViewInit,
   ElementRef,
-  AfterViewChecked, Renderer2
+  AfterViewChecked, Renderer2, RendererFactory2
 } from '@angular/core';
 import {DataService} from "../service/data.service";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
-import {BehaviorSubject, combineLatestWith, forkJoin, Subject, Subscription} from "rxjs";
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'fb-landing-page',
@@ -21,6 +21,9 @@ import {BehaviorSubject, combineLatestWith, forkJoin, Subject, Subscription} fro
 export class LandingPageComponent implements AfterViewChecked{
 
   @ViewChild('landingVideo', { static: false }) landingVideo: ElementRef | undefined;
+  @ViewChild('showreelWorksComponent', {read: ElementRef}) showreelWorksComponent: ElementRef | undefined;
+  @ViewChild('contactComponent', {read: ElementRef}) contactComponent: ElementRef | undefined;
+
   landingVideoUrl: SafeUrl | undefined;
   videoThumbImageUrl: string = "";
   contactImageUrl: string = "";
@@ -29,18 +32,14 @@ export class LandingPageComponent implements AfterViewChecked{
 
   isLoading: boolean = true;
 
-  safariAnimation: string = "{videoSafariFadeIn:true}";
-  chromeAnimation: string= "{videoChromeFadeIn:true}";
-  videoAnimation: string = "";
   isSafari: boolean;
 
   isBouncing: boolean = false;
 
-  constructor(private dataService: DataService,private sanitizer: DomSanitizer ) {
+  constructor(private dataService: DataService,private sanitizer: DomSanitizer) {
     this.isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
     this.makeArrowBounce()
-
 
     forkJoin({
       videoThumb: this.dataService.getVideoThumb(),
@@ -84,6 +83,14 @@ export class LandingPageComponent implements AfterViewChecked{
         this.isBouncing = false;
       }, 2000);  // Animation runs for 2 seconds
     }, 5000);  // Repeat every 5 seconds
+  }
+
+  scrollToShowReelComponent() {
+    this.showreelWorksComponent?.nativeElement?.scrollIntoView({behavior: 'smooth'})
+  }
+
+  scrollToContactComponent() {
+    this.contactComponent?.nativeElement.scrollIntoView({behavior: 'smooth'})
   }
 
 }

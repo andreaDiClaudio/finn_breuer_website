@@ -22,13 +22,13 @@
       <video #landingVideo [ngClass]="{videoChromeFadeIn:true}"  [src]="landingVideoUrl" (canplay)="landingVideo.play()" muted="muted" loop="loop" class="absolute h-full w-full object-cover z-[-2] select-none "></video>
     </div>
 
-    <fb-navbar></fb-navbar>
-    <div class="h-[100vh] flex items-end justify-center ">
-      <span [ngClass]="{'animate-custom-bounce':isBouncing}" class="material-icons text-white select-none text-[4rem] z-[1]">keyboard_arrow_down</span>
+    <fb-navbar (scrollContact)="scrollToContactComponent()"></fb-navbar>
+    <div class="h-[100vh] flex items-end justify-center" >
+      <span (click)="scrollToShowReelComponent()" [ngClass]="{'animate-custom-bounce':isBouncing}" class="hover:cursor-pointer material-icons text-white select-none text-[4rem] z-[1]">keyboard_arrow_down</span>
     </div>
-    <fb-showreel-works [showReelImageUrl]="showReelImageUrl"></fb-showreel-works>
+    <fb-showreel-works #showreelWorksComponent [showReelImageUrl]="showReelImageUrl"></fb-showreel-works>
     <fb-clients [clientsLogoUrlArray]="clientsLogoUrlArray"></fb-clients>
     <fb-contacts [contactImageUrl]="contactImageUrl"></fb-contacts>
-    <fb-footer></fb-footer>
+    <fb-footer #contactComponent ></fb-footer>
     </div>
 </div>

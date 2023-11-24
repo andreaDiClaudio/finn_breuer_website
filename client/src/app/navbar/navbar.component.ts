@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'fb-navbar',
@@ -9,10 +9,16 @@ export class NavbarComponent {
 
   isBurgerOpen: boolean = false;
 
+  @Output() scrollContact = new EventEmitter();
+
   // opens and closes the burger menu
   openBurger() {
     this.isBurgerOpen = !this.isBurgerOpen
     console.log(this.isBurgerOpen);
+  }
+
+  contactClick() {
+    this.scrollContact.emit();
   }
 
 }
