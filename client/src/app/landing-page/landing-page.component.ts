@@ -25,15 +25,21 @@ export class LandingPageComponent implements AfterViewChecked{
 
   isLoading: boolean = true;
 
+  safariAnimation: string = "{videoSafariFadeIn:true}";
+  chromeAnimation: string= "{videoChromeFadeIn:true}";
+  videoAnimation: string = "";
+  isSafari: boolean;
+
   constructor(private dataService: DataService,private sanitizer: DomSanitizer ) {
+    this.isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    //TODO try to put an image as background instead of the white so that while the video is not loaded the image is shown
     forkJoin({
       landingVideo: this.dataService.getLandingVideo(),
       clientsLogo: this.dataService.getClientLogos()
     }).subscribe(results => {
       this.landingVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dataService.landingVideoUrl);
-      console.log("video loaded")
       this.clientsLogoUrlArray = dataService.clientsLogoUrl;
-
       this.isLoading=false;
     });
   }
@@ -47,11 +53,12 @@ export class LandingPageComponent implements AfterViewChecked{
       this.landingVideo.nativeElement.oncanplay = () => {
         if (this.landingVideo) {
           this.landingVideo.nativeElement.play();
+
         }
       };
     } else if (this.landingVideo) {
-          this.landingVideo.nativeElement.muted = true;
-          this.landingVideo.nativeElement.play();
+      this.landingVideo.nativeElement.muted = true;
+      this.landingVideo.nativeElement.play();
     }
   };
 
