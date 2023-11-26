@@ -14,32 +14,36 @@
 </div>
 
 <div *ngIf="!isLoading">
-<div class="flex flex-row flex-wrap justify-center items-center pt-40 w-full gap-x-10" [ngClass]="{fadeIn: true}">
+<div class="flex flex-row flex-wrap justify-center items-center pt-40 w-full sm:gap-x-10" [ngClass]="{fadeIn: true}">
+  <div class="w-[30%] h-[30%] min-h-[270px] min-w-[270px]">
+    <img src="{{aboutProfileImageUrl}}" alt="profile_image" class="sm:rounded-full object-cover">
+  </div>
 
-    <img src="{{aboutProfileImageUrl}}" alt="profile_image" class="rounded-full w-[30%] h-[30%]">
-
-  <div class="flex flex-col flex-wrap w-[45%]">
-    <span class="font-bold text-[5rem]">
+  <div class="flex flex-col flex-wrap sm:w-[45%] sm:px-0 px-10 sm:items-start items-center">
+    <p class="font-bold text-[3rem] lg:text-[5rem] sm:text-left text-center">
       FINN BREUER
-    </span>
-    <span class="font-light text-[2rem]">
+    </p>
+    <span class="font-light text-[1.5rem] lg:text-[2rem] sm:text-left text-center">
       80 years old guy with strong love for unicorns.I work with fujifilm, z-cam, Sony and whatnot.Some other incredible description of you. DsssJdnsndjsndjsndsldn slkdnsdlsndksdnsdnsdsds
       Want to know more?
     </span>
   </div>
 </div>
 
-<div class="flex flex-col pt-40">
-  <div class="flex items-center w-full justify-around">
+<div class="flex flex-col sm:pt-40 pt-10">
+
+  <div class="flex items-center w-full justify-between px-10">
     <span (click)="previous()" class="material-icons text-[4rem] select-none hover:cursor-pointer">keyboard_arrow_left</span>
-    <img [ngClass]="{fadeIn: true,}" [src]="imageUrlArray[currentIndex]" alt="picture" class="w-[30%]">
-    <img [ngClass]="{fadeIn: true}" [src]="imageUrlArray[currentIndex + 1]" alt="picture" class="w-[30%]">
+    <div class="flex sm:flex-row flex-col items-center gap-y-10 sm:w-[30%] justify-around gap-x-28 w-[60%]">
+      <img [ngClass]="{fadeIn: true,}" [src]="imageUrlArray[currentIndex]" alt="picture" >
+      <img [ngClass]="{fadeIn: true}" [src]="imageUrlArray[currentIndex + 1]" alt="picture" >
+    </div>
     <span (click)="next()" class="material-icons text-[4rem] select-none hover:cursor-pointer">keyboard_arrow_right</span>
   </div>
 
   <div class="flex justify-center py-10">
     <span *ngFor="let image of imageUrlArray; let i=index"
-          [ngClass]="{'bg-black': i === currentIndex, 'bg-gray-500': i !== currentIndex}"
+          [ngClass]="{'bg-green-500': i === currentIndex, 'bg-gray-500': i !== currentIndex}"
           (click)="goToImage(i)"
           class="h-2.5 w-2.5 mx-1 rounded-full cursor-pointer"></span>
   </div>
