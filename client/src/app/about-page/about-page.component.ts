@@ -9,7 +9,9 @@ import {forkJoin} from "rxjs";
 })
 export class AboutPageComponent {
 
-  @ViewChild('contactComponent') contactComponent : ElementRef | undefined;
+  isLoading: boolean = true;
+
+  @ViewChild('contactComponent', {read: ElementRef}) contactComponent : ElementRef | undefined;
   aboutProfileImageUrl: string = "";
 
   imageUrlArray: string[] = [];
@@ -28,6 +30,7 @@ export class AboutPageComponent {
         this.aboutProfileImageUrl,
         this.aboutProfileImageUrl,
       ]
+      this.isLoading = false
     }
     )
   }

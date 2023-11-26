@@ -1,10 +1,24 @@
-<fb-navbar (scrollContact)="scrollToContactComponent()"></fb-navbar>
 
-<div class="flex flex-row flex-wrap justify-center items-center pt-40 w-full gap-x-10">
+<div *ngIf="isLoading">
+  <div class='flex space-x-2 justify-center items-center bg-white h-screen'>
+    <span class='sr-only'>Loading...</span>
+    <div class='h-8 w-8 bg-gray-700 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+    <div class='h-8 w-8 bg-gray-700 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+    <div class='h-8 w-8 bg-gray-700 rounded-full animate-bounce'></div>
+  </div>
+</div>
+
+
+<div class="z-50">
+  <fb-navbar (scrollContact)="scrollToContactComponent()"></fb-navbar>
+</div>
+
+<div *ngIf="!isLoading">
+<div class="flex flex-row flex-wrap justify-center items-center pt-40 w-full gap-x-10" [ngClass]="{fadeIn: true}">
 
     <img src="{{aboutProfileImageUrl}}" alt="profile_image" class="rounded-full w-[30%] h-[30%]">
 
-  <div class="flex flex-col flex-wrap w-[50%]">
+  <div class="flex flex-col flex-wrap w-[45%]">
     <span class="font-bold text-[5rem]">
       FINN BREUER
     </span>
@@ -31,3 +45,4 @@
   </div>
 </div>
 <fb-footer #contactComponent></fb-footer>
+</div>
