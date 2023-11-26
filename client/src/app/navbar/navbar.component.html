@@ -14,7 +14,9 @@
   <div *ngIf="isBurgerOpen">
     <div [ngClass]="{fadeIn:isBurgerOpen , fadeOut:!isBurgerOpen}" class="flex justify-around items-center bg-black bg-opacity-60 rounded-full p-2 select-none w-72">
       <span class="text-[1.2rem] text-white select-none underline-anim">Works</span>
-      <span class="text-[1.2rem] text-white select-none underline-anim">About</span>
+      <a href="http://localhost:4200/about">
+        <span class="text-[1.2rem] text-white select-none underline-anim">About</span>
+      </a>
       <span class="text-[1.2rem] text-white select-none underline-anim hover:cursor-pointer" (click)="contactClick()">Contacts</span>
       <span class="material-icons text-[2rem] text-white select-none hover:cursor-pointer" (click)="openBurger()" >close</span>
     </div>

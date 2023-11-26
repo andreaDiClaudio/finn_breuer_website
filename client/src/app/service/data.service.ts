@@ -15,12 +15,14 @@ export class DataService {
   private contactImageApiUrl = "http://localhost:8080/api/contactsImage"
   private showReelImageApiUrl = "http://localhost:8080/api/showReelLanding"
   private videoThumbImageApiUrl = "http://localhost:8080/api/videoThumb"
+  private aboutProfileImageApiUrl = "http://localhost:8080/api/aboutProfileImage"
 
   landingVideoUrl: string = "";
   clientsLogoUrl: string[] = [];
   contactImageUrl: string = "";
   showReelImageUrl: string = "";
   videoThumbImageUrl: string = "";
+  aboutProfileImageUrl: string = "";
 
 
   getLandingVideo() {
@@ -57,6 +59,13 @@ export class DataService {
     return this.http.get(this.videoThumbImageApiUrl, {responseType: 'json'}).pipe(tap((result) => {
       const image = result as Image;
       this.videoThumbImageUrl = image.secure_url;
+    }))
+  }
+
+  getAboutProfileImage() {
+    return this.http.get(this.aboutProfileImageApiUrl, {responseType: 'json'}).pipe(tap((result) => {
+      const image = result as Image;
+      this.aboutProfileImageUrl = image.secure_url;
     }))
   }
 
