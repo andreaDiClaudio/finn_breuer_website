@@ -9,12 +9,12 @@
     </div>
   </div>
 
-  <div *ngIf="!isLoading" class="select-none">
+  <div *ngIf="!isLoading">
 
     <div *ngIf="isSafari" class="select-none">
       <img src="{{videoThumbImageUrl}}" [ngClass]="{fadeIn:true}" alt="video Thumbnail" class="absolute h-full w-full object-cover z-[-4] select-none">
       <video #landingVideo [ngClass]="{videoSafariFadeIn:true}"  [src]="landingVideoUrl" class="absolute h-full w-full object-cover z-[0] select-none" autoplay="autoplay" loop="loop" muted="muted">
-        <source src="{{landingVideoUrl}} ">
+        <source src="{{landingVideoUrl}}" type="video/mp4">
       </video>
     </div>
 
@@ -29,6 +29,6 @@
     <fb-showreel-works #showreelWorksComponent [showReelImageUrl]="showReelImageUrl"></fb-showreel-works>
     <fb-clients [clientsLogoUrlArray]="clientsLogoUrlArray"></fb-clients>
     <fb-contacts [contactImageUrl]="contactImageUrl"></fb-contacts>
-    <fb-footer class="z-10" #contactComponent ></fb-footer>
+    <fb-footer #contactComponent ></fb-footer>
     </div>
 </div>
