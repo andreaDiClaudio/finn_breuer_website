@@ -1,0 +1,30 @@
+<div *ngIf="isLoading">
+  <div class='flex space-x-2 justify-center items-center bg-white h-screen'>
+    <span class='sr-only'>Loading...</span>
+    <div class='h-8 w-8 bg-gray-700 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+    <div class='h-8 w-8 bg-gray-700 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+    <div class='h-8 w-8 bg-gray-700 rounded-full animate-bounce'></div>
+  </div>
+</div>
+
+<div *ngIf="!isLoading">
+  <div class="select-none">
+    <img src="{{pageCoverImageUrl}}" [ngClass]="{fadeIn:true}" alt="video Thumbnail" class="absolute h-[40%] min-h-[330px] w-full object-cover z-[-4] select-none">
+  </div>
+
+  <fb-navbar></fb-navbar>
+  <div class="text-[3rem] text-white lg:text-[5rem] font-bold h-[40%] min-h-[330px] flex justify-center items-center">
+    <span>WORKS</span>
+  </div>
+
+  <div class="flex items-center justify-center pt-10 gap-x-2">
+    <span class="font-bold underline">Videography</span>
+    <span>|</span>
+    <span>Photography</span>
+  </div>
+
+  <div class="flex flex-wrap">
+
+  </div>
+
+</div>

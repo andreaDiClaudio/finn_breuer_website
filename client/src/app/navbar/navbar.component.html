@@ -13,7 +13,9 @@
 
   <div *ngIf="isBurgerOpen">
     <div [ngClass]="{fadeIn:isBurgerOpen , fadeOut:!isBurgerOpen}" class="flex justify-around items-center bg-black bg-opacity-60 rounded-full p-2 select-none w-72">
-      <span class="text-[1.2rem] text-white select-none underline-anim">Works</span>
+      <a href="http://localhost:4200/works">
+        <span class="text-[1.2rem] text-white select-none underline-anim">Works</span>
+      </a>
       <a href="http://localhost:4200/about">
         <span class="text-[1.2rem] text-white select-none underline-anim">About</span>
       </a>

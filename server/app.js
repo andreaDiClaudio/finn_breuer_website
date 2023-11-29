@@ -17,6 +17,27 @@ cloudinary.config({
     secure: true
 })
 
+const publicId = 'samples/finn_website_test/landingPage/clients_logo/sxncjgp5ghfy89ecz1ro';
+
+/*
+
+cloudinary.api.update(
+    publicId, {
+        resource_type: 'image',
+        type: 'upload',
+        context: 'description=Your image description' // Add your description here
+    })
+    .then(result => {
+        console.log(result);
+    })
+    .catch(error => {
+        console.error(error);
+    })
+
+ */
+
+
+
 app.get("/api/landingVideo", async (req, res) => {
     try {
         const folderPath = "samples/finn_website_test/landingPage/video/*";
@@ -32,19 +53,25 @@ app.get("/api/landingVideo", async (req, res) => {
     }
 })
 
-app.get("/api/clientLogos", async (req,res) => {
+app.get("/api/clientLogos", async (req, res) => {
     try {
-        const folderPath = "samples/finn_website_test/landingPage/clients_logo/*"
+        const folderPath = "samples/finn_website_test/landingPage/clients_logo/*";
 
+        // Include 'context' to get the description in the response
         const result = await cloudinary.search
-        .expression('folder:' + folderPath).sort_by('public_id','desc').execute();
+            .expression('folder:' + folderPath)
+            .sort_by('public_id', 'desc')
+            .with_field('context') // Include 'context' in the response
+            .execute();
 
-        const elements = result.resources;
-        res.json(elements);
+        const elements = result.resources
+
+        res.json({ elements }); // return results to have also the counter
     } catch (err) {
+        console.error(err);
         res.status(500).json({ error: 'Error in retrieving images' });
     }
-})
+});
 
 app.get("/api/contactsImage", async (req,res) => {
     try {

@@ -10,7 +10,6 @@
   </div>
 
   <div *ngIf="!isLoading">
-
     <div *ngIf="isSafari" class="select-none">
       <img src="{{videoThumbImageUrl}}" [ngClass]="{fadeIn:true}" alt="video Thumbnail" class="absolute h-full w-full object-cover z-[-4] select-none">
       <video #landingVideo [ngClass]="{videoSafariFadeIn:true}"  [src]="landingVideoUrl" class="absolute h-full w-full object-cover z-[0] select-none" autoplay="autoplay" loop="loop" muted="muted">
