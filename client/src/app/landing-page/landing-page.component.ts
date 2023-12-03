@@ -28,9 +28,10 @@ export class LandingPageComponent implements AfterViewChecked{
   videoThumbImageUrl: string = "";
   contactImageUrl: string = "";
   showReelImageUrl: string = "";
+  worksImageUrl: string = "";
   clientsLogoUrlArray: string[] = [];
 
-  isLoading: boolean = true;
+  isLoading: boolean = false;
 
   isSafari: boolean;
 
@@ -42,17 +43,20 @@ export class LandingPageComponent implements AfterViewChecked{
     this.makeArrowBounce()
 
     forkJoin({
-      videoThumb: this.dataService.getVideoThumb(),
-      landingVideoApi: this.dataService.getLandingVideo(),
-      showReelImage: this.dataService.getShowreelImage(),
+      //videoThumb: this.dataService.getVideoThumb(),
+      //landingVideoApi: this.dataService.getLandingVideo(),
+      //showReelImage: this.dataService.getShowreelImage(),
+      worksLandingImage: this.dataService.getWorksLandingImage(),
       clientsLogo: this.dataService.getClientLogos(),
       contactImage: this.dataService.getContactImage(),
     }).subscribe(results => {
-      this.landingVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dataService.landingVideoUrl);
+      //this.landingVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dataService.landingVideoUrl);
       this.clientsLogoUrlArray = dataService.clientsLogoUrl;
-      this.videoThumbImageUrl = dataService.videoThumbImageUrl;
+      //this.videoThumbImageUrl = dataService.videoThumbImageUrl;
       this.contactImageUrl = dataService.contactImageUrl;
-      this.showReelImageUrl = dataService.showReelImageUrl;
+      //this.showReelImageUrl = dataService.showReelImageUrl;
+      this.worksImageUrl = dataService.worksLandingImageUrl;
+      console.log(this.worksImageUrl);
 
       this.isLoading=false;
     });
@@ -70,7 +74,7 @@ export class LandingPageComponent implements AfterViewChecked{
       };
     } else if (this.landingVideo) {
       this.landingVideo.nativeElement.muted = true;
-      this.landingVideo.nativeElement.play();
+      //this.landingVideo.nativeElement.play();
     }
   };
 

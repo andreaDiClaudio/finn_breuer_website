@@ -14,29 +14,23 @@ export class AboutPageComponent {
   @ViewChild('contactComponent', {read: ElementRef}) contactComponent : ElementRef | undefined;
   aboutProfileImageUrl: string = "";
 
-  imageUrlArray: string[] = [];
+  inActionImagesUrl: string[] = [];
   currentIndex: number = 0;
 
   constructor(dataService: DataService) {
     forkJoin({
-      profileImage: dataService.getAboutProfileImage()
+      profileImage: dataService.getAboutProfileImage(),
+      inActionImagesArray: dataService.getAboutInActionImages()
     }).subscribe(() => {
       this.aboutProfileImageUrl = dataService.aboutProfileImageUrl
-      this.imageUrlArray = [
-        this.aboutProfileImageUrl,
-        this.aboutProfileImageUrl,
-        this.aboutProfileImageUrl,
-        this.aboutProfileImageUrl,
-        this.aboutProfileImageUrl,
-        this.aboutProfileImageUrl,
-      ]
+      this.inActionImagesUrl = dataService.aboutInActionImagesArrayUrl
       this.isLoading = false
     }
     )
   }
 
   next() {
-    if (this.currentIndex < this.imageUrlArray.length - 1) {
+    if (this.currentIndex < this.inActionImagesUrl.length - 1) {
       this.currentIndex++;
     } else {
       this.currentIndex = 0; // Go back to the first item
@@ -47,7 +41,7 @@ export class AboutPageComponent {
     if (this.currentIndex > 0) {
       this.currentIndex--;
     } else {
-      this.currentIndex = this.imageUrlArray.length - 1; // Go to the last item
+      this.currentIndex = this.inActionImagesUrl.length - 1; // Go to the last item
     }
   }
 

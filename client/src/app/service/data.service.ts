@@ -14,8 +14,10 @@ export class DataService {
   private clientsLogoApiUrl = "http://localhost:8080/api/clientLogos"
   private contactImageApiUrl = "http://localhost:8080/api/contactsImage"
   private showReelImageApiUrl = "http://localhost:8080/api/showReelLanding"
+  private worksLandingApiUrl = "http://localhost:8080/api/worksLanding"
   private videoThumbImageApiUrl = "http://localhost:8080/api/videoThumb"
   private aboutProfileImageApiUrl = "http://localhost:8080/api/aboutProfileImage"
+  private aboutInActionImagesApiUrl = "http://localhost:8080/api/aboutInActionsImages"
   private worksVideographyImageApiUrl = "http://localhost:8080/api/works/videography"
   private worksPhotographyImageApiUrl = "http://localhost:8080/api/works/videography"
 
@@ -23,8 +25,10 @@ export class DataService {
   clientsLogoUrl: string[] = [];
   contactImageUrl: string = "";
   showReelImageUrl: string = "";
+  worksLandingImageUrl: string = "";
   videoThumbImageUrl: string = "";
   aboutProfileImageUrl: string = "";
+  aboutInActionImagesArrayUrl: string[] = [];
   worksVideoUrl: string[] = [];
 
 
@@ -58,6 +62,13 @@ export class DataService {
     }))
   }
 
+  getWorksLandingImage() {
+    return this.http.get(this.worksLandingApiUrl, {responseType: 'json'}).pipe(tap((result) => {
+      const image = result as Image;
+      this.worksLandingImageUrl = image.secure_url;
+    }))
+  }
+
   getVideoThumb() {
     return this.http.get(this.videoThumbImageApiUrl, {responseType: 'json'}).pipe(tap((result) => {
       const image = result as Image;
@@ -69,6 +80,16 @@ export class DataService {
     return this.http.get(this.aboutProfileImageApiUrl, {responseType: 'json'}).pipe(tap((result) => {
       const image = result as Image;
       this.aboutProfileImageUrl = image.secure_url;
+    }))
+  }
+
+  getAboutInActionImages() {
+    return this.http.get(this.aboutInActionImagesApiUrl, {responseType: 'json'}).pipe(tap((result) => {
+      const images = result as Image[];
+      images.forEach((image) => {
+      this.aboutInActionImagesArrayUrl.push(image.secure_url);
+      })
+      console.log(this.aboutInActionImagesArrayUrl)
     }))
   }
 

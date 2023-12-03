@@ -25,7 +25,7 @@
     <div class="h-[100vh] flex items-end justify-center" >
       <span (click)="scrollToShowReelComponent()" [ngClass]="{'animate-custom-bounce':isBouncing}" class="hover:cursor-pointer material-icons text-white select-none text-[4rem] z-[1]">keyboard_arrow_down</span>
     </div>
-    <fb-showreel-works #showreelWorksComponent [showReelImageUrl]="showReelImageUrl"></fb-showreel-works>
+    <fb-showreel-works #showreelWorksComponent [showReelImageUrl]="showReelImageUrl" [worksImageUrl]="worksImageUrl" ></fb-showreel-works>
     <fb-clients [clientsLogoUrlArray]="clientsLogoUrlArray"></fb-clients>
     <fb-contacts [contactImageUrl]="contactImageUrl"></fb-contacts>
     <fb-footer #contactComponent ></fb-footer>

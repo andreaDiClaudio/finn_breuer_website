@@ -11,6 +11,7 @@ export class ShowreelWorksComponent {
   showReelHeight: string = "";
   worksHeight: string = "";
   @Input() showReelImageUrl = ""
+  @Input() worksImageUrl = ""
 
   constructor(dataService: DataService) {
     if (window.innerHeight > 825) {

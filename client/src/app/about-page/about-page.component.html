@@ -34,14 +34,14 @@
   <div class="flex items-center w-full justify-between px-10">
     <span (click)="previous()" class="material-icons text-[4rem] select-none hover:cursor-pointer">keyboard_arrow_left</span>
     <div class="flex sm:flex-row flex-col items-center gap-y-10 sm:w-[30%] justify-around gap-x-28 w-[60%]">
-      <img [ngClass]="{fadeIn: true,}" [src]="imageUrlArray[currentIndex]" alt="picture" >
-      <img [ngClass]="{fadeIn: true}" [src]="imageUrlArray[currentIndex + 1]" alt="picture" >
+      <img [ngClass]="{fadeIn: true,}" [src]="inActionImagesUrl[currentIndex]" alt="picture" >
+      <img [ngClass]="{fadeIn: true}" [src]="inActionImagesUrl[currentIndex + 1]" alt="picture" >
     </div>
     <span (click)="next()" class="material-icons text-[4rem] select-none hover:cursor-pointer">keyboard_arrow_right</span>
   </div>
 
   <div class="flex justify-center py-10">
-    <span *ngFor="let image of imageUrlArray; let i=index"
+    <span *ngFor="let image of inActionImagesUrl; let i=index"
           [ngClass]="{'bg-green-500': i === currentIndex, 'bg-gray-500': i !== currentIndex}"
           (click)="goToImage(i)"
           class="h-2.5 w-2.5 mx-1 rounded-full cursor-pointer"></span>
