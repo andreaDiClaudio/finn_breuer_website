@@ -23,8 +23,12 @@
     <span>Photography</span>
   </div>
 
-  <div class="flex flex-wrap">
-
+  <div class="flex flex-wrap justify-center items-center">
+    <div *ngFor="let videoPreviewUrl of videoPreviewUrl">
+      <div class="bg-black w-48 h-48">
+        <img src="{{videoPreviewUrl}}" class="object-contain" alt="Video_preview_image">
+      </div>
+    </div>
   </div>
 
 </div>

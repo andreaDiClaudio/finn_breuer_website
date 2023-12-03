@@ -53,25 +53,19 @@ app.get("/api/landingVideo", async (req, res) => {
     }
 })
 
-app.get("/api/clientLogos", async (req, res) => {
+app.get("/api/clientLogos", async (req,res) => {
     try {
-        const folderPath = "samples/finn_website_test/landingPage/clients_logo/*";
+        const folderPath = "samples/finn_website_test/landingPage/clients_logo/*"
 
-        // Include 'context' to get the description in the response
         const result = await cloudinary.search
-            .expression('folder:' + folderPath)
-            .sort_by('public_id', 'desc')
-            .with_field('context') // Include 'context' in the response
-            .execute();
+            .expression('folder:' + folderPath).sort_by('public_id','desc').execute();
 
-        const elements = result.resources
-
-        res.json({ elements }); // return results to have also the counter
+        const elements = result.resources;
+        res.json(elements);
     } catch (err) {
-        console.error(err);
         res.status(500).json({ error: 'Error in retrieving images' });
     }
-});
+})
 
 app.get("/api/contactsImage", async (req,res) => {
     try {
@@ -133,6 +127,35 @@ app.get("/api/aboutProfileImage", async (req,res) => {
 
     } catch (err) {
         res.status(500).json({ error: 'Error in retrieving image' });
+    }
+})
+
+
+app.get("/api/works/videography", async (req,res) => {
+    try {
+        const folderPath = "samples/finn_website_test/landingPage/clients_logo/*"
+
+        const result = await cloudinary.search
+            .expression('folder:' + folderPath).sort_by('public_id','desc').execute();
+
+        const elements = result.resources;
+        res.json(elements);
+    } catch (err) {
+        res.status(500).json({ error: 'Error in retrieving images' });
+    }
+})
+
+app.get("/api/works/photography", async (req,res) => {
+    try {
+        const folderPath = "samples/finn_website_test/landingPage/clients_logo/*"
+
+        const result = await cloudinary.search
+            .expression('folder:' + folderPath).sort_by('public_id','desc').execute();
+
+        const elements = result.resources;
+        res.json(elements);
+    } catch (err) {
+        res.status(500).json({ error: 'Error in retrieving images' });
     }
 })
 

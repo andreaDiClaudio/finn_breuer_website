@@ -77,7 +77,6 @@ export class LandingPageComponent implements AfterViewChecked{
   makeArrowBounce() {
     setInterval(() => {
       this.isBouncing = true;
-    console.log("arrived")
 
       setTimeout(() => {
         this.isBouncing = false;
